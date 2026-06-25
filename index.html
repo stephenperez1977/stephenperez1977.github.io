@@ -62,7 +62,21 @@
       font-weight: 600;
     }
 
-    .btn-resume {
+    /* CONTAINER FOR ACTIONS & SOCIAL BUTTONS */
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    @media screen and (max-width: 768px) {
+      .header-right {
+        justify-content: center;
+      }
+    }
+
+    .btn-resume, .btn-social {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -76,6 +90,13 @@
       background-color: transparent;
       transition: all 0.25s ease;
       white-space: nowrap;
+      box-sizing: border-box;
+    }
+
+    /* SUBTLE STYLING VARIATION FOR SOCIAL LINKS */
+    .btn-social {
+      border-color: #3a3a3c;
+      color: #88888b;
     }
 
     .btn-resume:hover {
@@ -83,6 +104,13 @@
       color: #0a0a0c;
       transform: translateY(-2px);
       box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-social:hover {
+      border-color: #ffffff;
+      color: #ffffff;
+      background-color: #131316;
+      transform: translateY(-2px);
     }
 
     .headline {
@@ -118,7 +146,6 @@
       }
     }
 
-    /* BRAND NEW CONTAINER CLASS TO FORCE BROWSER TO RESET CACHE */
     .v-flex-deck {
       display: flex !important;
       flex-direction: row !important;
@@ -138,7 +165,7 @@
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* HARD MOBILE OVERRIDE — STACKS 1 COLUMN NO MATTER WHAT */
+    /* FIXED MOBILE ALIGNMENT OVERRIDE */
     @media screen and (max-width: 768px) {
       .v-flex-deck {
         flex-direction: column !important;
@@ -196,7 +223,6 @@
       transition: transform 0.3s ease, color 0.3s ease;
     }
 
-    /* INTERACTIONS */
     .v-flex-deck details:hover {
       border-color: #ffffff;
       transform: translateY(-4px);
@@ -216,7 +242,6 @@
       color: #ffffff;
     }
 
-    /* OPEN STATE CARD FIXES */
     .v-flex-deck details[open] {
       width: 100% !important;
       background-color: #16161a;
@@ -241,7 +266,6 @@
       align-self: center;
     }
 
-    /* INNER GALLERY CONTENT ARRANGEMENT */
     .category-content {
       padding: 30px;
       display: grid;
@@ -317,9 +341,18 @@
       <div class="name">Stephen G. Perez</div>
       <div class="subtitle">Senior 3D & Graphic Designer — Singapore</div>
     </div>
-    <a href="resume.pdf" download="Stephen_Perez_Resume.pdf" class="btn-resume">
-      Download Resume ↓
-    </a>
+    <!-- RE-ESTABLISHED SOCIAL LINKS AND ACTION SECTION -->
+    <div class="header-right">
+      <a href="https://www.facebook.com/spdigitalgraphics" target="_blank" class="btn-social">
+        SG Digital Graphics ↗
+      </a>
+      <a href="linkedin.com/in/stephen-perez-40387535b" target="_blank" class="btn-social">
+        LinkedIn ↗
+      </a>
+      <a href="resume.pdf" download="Stephen_Perez_Resume.pdf" class="btn-resume">
+        Download Resume ↓
+      </a>
+    </div>
   </header>
 
   <main>
@@ -328,6 +361,7 @@
 
     <div class="v-flex-deck">
 
+      <!-- CATEGORY 1: EXHIBITION BOOTH -->
       <details>
         <summary class="section-title" id="exhibitions">
           <div class="bg-preview" style="background-image: url('https://images.unsplash.com/photo-1508962914676-134849a727f0?q=80&w=600&auto=format&fit=crop');"></div>
@@ -386,6 +420,7 @@
         </div>
       </details> 
       
+      <!-- CATEGORY 2: BRAND ACTIVATION -->
       <details>
         <summary class="section-title" id="activation">
           <div class="bg-preview" style="background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600&auto=format&fit=crop');"></div>
@@ -472,6 +507,7 @@
         </div>
       </details> 
       
+      <!-- CATEGORY 3: FESTIVE DECOR -->
       <details>
         <summary class="section-title" id="festive">
           <div class="bg-preview" style="background-image: url('https://images.unsplash.com/photo-1543589077-47d81606c1bf?q=80&w=600&auto=format&fit=crop');"></div>
@@ -526,6 +562,7 @@
         </div>
       </details> 
       
+      <!-- CATEGORY 4: INTERIOR DESIGN -->
       <details>
         <summary class="section-title" id="interior">
           <div class="bg-preview" style="background-image: url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=600&auto=format&fit=crop');"></div>
@@ -572,6 +609,7 @@
         </div>
       </details> 
       
+      <!-- CATEGORY 5: PHOTOGRAPHY -->
       <details>
         <summary class="section-title" id="photography">
           <div class="bg-preview" style="background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=600&auto=format&fit=crop');"></div>
@@ -610,6 +648,7 @@
         </div>
       </details> 
       
+      <!-- CATEGORY 6: OTHERS -->
       <details>
         <summary class="section-title" id="others">
           <div class="bg-preview" style="background-image: url('https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?q=80&w=600&auto=format&fit=crop');"></div>
@@ -664,6 +703,7 @@
         </div>
       </details> 
       
+      <!-- CATEGORY 7: VIDEOS -->
       <details style="width: 100% !important;">
         <summary class="section-title" id="videos">
           <div class="bg-preview" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop');"></div>

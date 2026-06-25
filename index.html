@@ -767,6 +767,16 @@
   </main>
 
 </div>
-
+<script>
+  document.querySelectorAll('details').forEach((details) => {
+    details.addEventListener('click', (e) => {
+      document.querySelectorAll('details').forEach((other) => {
+        if (other !== details) {
+          other.removeAttribute('open');
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>

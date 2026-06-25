@@ -1,8 +1,8 @@
- <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Stephen G. Perez — Portfolio</title>
   <style>
     body {
@@ -32,9 +32,705 @@
       align-items: flex-end;
     }
 
-    @media (max-width: 768px) {
+    @media screen and (max-width: 768px) {
       header {
         flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+      }
+    }
+
+    .header-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .name {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0 0 5px 0;
+    }
+
+    .subtitle {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      color: #66666e;
+      margin-top: 6px;
+      font-weight: 600;
+    }
+
+    .btn-resume {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border: 1px solid #ffffff;
+      border-radius: 8px;
+      background-color: transparent;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .btn-resume:hover {
+      background-color: #ffffff;
+      color: #0a0a0c;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+    }
+
+    .headline {
+      font-size: 46px; 
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin: 0 0 15px 0;
+      background: linear-gradient(180deg, #ffffff 30%, #55555a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @media screen and (max-width: 768px) {
+      .headline {
+        font-size: 32px;
+        text-align: center;
+      }
+    }
+
+    .experience {
+      color: #88888b;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: -0.2px;
+      margin: 0 0 40px 0;
+    }
+
+    @media screen and (max-width: 768px) {
+      .experience {
+        font-size: 15px;
+        text-align: center;
+      }
+    }
+
+    /* BRAND NEW CONTAINER CLASS TO FORCE BROWSER TO RESET CACHE */
+    .v-flex-deck {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: wrap !important;
+      gap: 24px !important;
+      width: 100% !important;
+      justify-content: center !important;
+    }
+
+    .v-flex-deck details {
+      background-color: #131316;
+      border: 1px solid #222226;
+      border-radius: 16px;
+      overflow: hidden;
+      width: calc(50% - 12px) !important;
+      box-sizing: border-box;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* HARD MOBILE OVERRIDE — STACKS 1 COLUMN NO MATTER WHAT */
+    @media screen and (max-width: 768px) {
+      .v-flex-deck {
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+      .v-flex-deck details {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+
+    summary.section-title {
+      cursor: pointer;
+      outline: none;
+      user-select: none;
+      padding: 30px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #88888b;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 140px;
+      position: relative;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
+    summary.section-title .bg-preview {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0; 
+      filter: grayscale(100%) brightness(30%); 
+      mix-blend-mode: luminosity;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      z-index: 1;
+    }
+
+    summary.section-title .title-text,
+    summary.section-title .arrow-icon {
+      position: relative;
+      z-index: 2;
+    }
+
+    summary.section-title .arrow-icon {
+      align-self: flex-end;
+      font-size: 20px;
+      color: #55555a;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    /* INTERACTIONS */
+    .v-flex-deck details:hover {
+      border-color: #ffffff;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .v-flex-deck details:hover summary.section-title {
+      color: #ffffff;
+    }
+
+    .v-flex-deck details:hover summary.section-title .bg-preview {
+      opacity: 0.25; 
+      transform: scale(1.03);
+    }
+
+    .v-flex-deck details:hover summary.section-title .arrow-icon {
+      color: #ffffff;
+    }
+
+    /* OPEN STATE CARD FIXES */
+    .v-flex-deck details[open] {
+      width: 100% !important;
+      background-color: #16161a;
+      border-color: #ffffff;
+    }
+
+    .v-flex-deck details[open] summary.section-title {
+      color: #ffffff;
+      border-bottom: 1px solid #222226;
+      min-height: 80px;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .v-flex-deck details[open] summary.section-title .bg-preview {
+      opacity: 0.08;
+    }
+
+    .v-flex-deck details[open] summary.section-title .arrow-icon {
+      transform: rotate(90deg);
+      color: #ffffff;
+      align-self: center;
+    }
+
+    /* INNER GALLERY CONTENT ARRANGEMENT */
+    .category-content {
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    
+    @media screen and (max-width: 640px) {
+      .category-content {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+    }
+
+    .project-card {
+      background-color: #1c1c21;
+      border: 1px solid #2d2d33;
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      border-color: #44444a;
+    }
+
+    .project-info h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin: 0;
+      color: #e5e5e7;
+      line-height: 1.4;
+      padding-right: 15px;
+    }
+
+    .btn-link {
+      display: inline-block;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border: 1px solid #3a3a3c;
+      border-radius: 6px;
+      background-color: #222226;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .project-card:hover .btn-link {
+      background-color: #ffffff;
+      color: #0a0a0c;
+      border-color: #ffffff;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0a0a0c; }
+    ::-webkit-scrollbar-thumb { background: #222226; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3a3a3c; }
+  </style>
+</head>
+<body>
+
+<div class="portfolio-container">
+
+  <header>
+    <div class="header-left">
+      <div class="name">Stephen G. Perez</div>
+      <div class="subtitle">Senior 3D & Graphic Designer — Singapore</div>
+    </div>
+    <a href="resume.pdf" download="Stephen_Perez_Resume.pdf" class="btn-resume">
+      Download Resume ↓
+    </a>
+  </header>
+
+  <main>
+    <h1 class="headline">End-to-end creative execution for global exhibitions and brand environments</h1>
+    <p class="experience">Over two decades—26 years, exactly—of proven experience specializing in 3D design, multimedia, and commercial photography.</p>
+
+    <div class="v-flex-deck">
+
+      <details>
+        <summary class="section-title" id="exhibitions">
+          <div class="bg-preview" style="background-image: url('https://images.unsplash.com/photo-1508962914676-134849a727f0?q=80&w=600&auto=format&fit=crop');"></div>
+          <span class="title-text">EXHIBITION BOOTH</span>
+          <span class="arrow-icon">→</span>
+        </summary>
+        <div class="category-content">
+          <div class="project-card">
+            <div class="project-info"><h3>The Bestiary Pet Care barn booth</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1105810091568701&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>TNTS - SITCE 2024 @ Suntec Convention Center</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.972085664941145&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>LTG - SITCE 2024 @ Suntec Convention Center</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.972083901607988&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Mandai Park Booth</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.901757601973952&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Media Corp 15x6</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.688846076598440&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Be A Changi Millioniar</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.688845316598516&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Fimer(6x6 Meters)</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.5581278341948663&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>UOB Asset Management</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.2785499294859929&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Aonia Santen Vision 6X3</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.2765727006837158&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Nikko Asset Management</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.2734816256594900&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Corporate Affairs Booths</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1584590798284124&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Human Claw Structure Concept</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1583528678390336&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+        </div>
+      </details> 
+      
+      <details>
+        <summary class="section-title" id="activation">
+          <div class="bg-preview" style="background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600&auto=format&fit=crop');"></div>
+          <span class="title-text">BRAND ACTIVATION</span>
+          <span class="arrow-icon">→</span>
+        </summary>
+        <div class="category-content">
+          <div class="project-card">
+            <div class="project-info"><h3>Nissan Car Display Concept</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.2819161484827043&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Hallyu Pop Fest 2018</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.2087763294633536&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>F1 Proposed Modular food counter</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.901756885307357&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>ESMO 2018 Singapore</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.2081549558588243&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Guinness - Pour Your Own Pint</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.2076293719113827&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>TTSH Hill Top Cafe</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1584572628285941&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>FFL Duathlon 2017</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1584571121619425&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Purple Parade 2017</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1584543188288885&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Marina Bay Sands</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1584537731622764&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Youth NTUC</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1583529555056915&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Gardens By the Bay</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1583527831723754&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Singapore Grand Prix F1 & Johnnie Walker Jet Black Party 2011</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.341893355887214&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>DIAGEO Game Workshop 2010</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.341876182555598&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Diageo Year End Party 2010</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.341878279222055&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Diageo Reserve World Class Singapore 2011</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.342659385810611&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Singapore Grand Prix Formula 1 2010</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.341734819236401&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Johnnie Walker Jet Black Party 2010</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.341736349236248&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Embraer Asia Pacific 2010</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.341879702555246&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Discovery Channel featuring Ian Wright 2010</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.341880782555138&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+        </div>
+      </details> 
+      
+      <details>
+        <summary class="section-title" id="festive">
+          <div class="bg-preview" style="background-image: url('https://images.unsplash.com/photo-1543589077-47d81606c1bf?q=80&w=600&auto=format&fit=crop');"></div>
+          <span class="title-text">FESTIVE DECOR</span>
+          <span class="arrow-icon">→</span>
+        </summary>
+        <div class="category-content">
+          <div class="project-card">
+            <div class="project-info"><h3>Proposed RWS Christmas 2024</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.901765118639867&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Proposed Christmas on a Great street 2024</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.901758825307163&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Singapore National Day @ South Beach</h3></div>
+            <a href="https://www.facebook.com/spdigitalgraphics/photos_albums" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>i12 Katong Proposed drawing for CNY 2025 and Christmas 2024</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.901763838639995&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Singapore National Day outdoor Video Clip</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.901760601973652&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Clarke Quay Sound Port Festival 2019</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.2700948249981701&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>FinTech Singapore 2018</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.2115416981868167&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>LED Video Clip at @onetampineshub</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.751280697021644&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Great Christmas Village 2017</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1584573324952538&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Farmer's Market 2017</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1584569618286242&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Coffee Fest 2017</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1583496521726885&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+        </div>
+      </details> 
+      
+      <details>
+        <summary class="section-title" id="interior">
+          <div class="bg-preview" style="background-image: url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=600&auto=format&fit=crop');"></div>
+          <span class="title-text">INTERIOR DESIGN</span>
+          <span class="arrow-icon">→</span>
+        </summary>
+        <div class="category-content">
+          <div class="project-card">
+            <div class="project-info"><h3>Office Dormitory Proposed Layout</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1390884433061264&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Office Extension 2026</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1388587429957631&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Kitchen at Holland Court</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.4560454107364430&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Study room at Jalan Limau Bali, SG</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.4515398155203359&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>House Renovation Collection as of 2021</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.3960484447361402&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Singapore HDB Living room / dining room</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.3945887125487801&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>2021 House 2</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.3648242945252222&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>2021 House 01</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.3644977212245462&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>House: 7 x 3 meters or 21 sq/meter floor area</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.3425151504228035&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+        </div>
+      </details> 
+      
+      <details>
+        <summary class="section-title" id="photography">
+          <div class="bg-preview" style="background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=600&auto=format&fit=crop');"></div>
+          <span class="title-text">PHOTOGRAPHY</span>
+          <span class="arrow-icon">→</span>
+        </summary>
+        <div class="category-content">
+          <div class="project-card">
+            <div class="project-info"><h3>8Guys Product Shot</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.614289395314274&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>PAC Cosmetologie Beauty, Wellness and Trends Expo 2014</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.636482149761665&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Asia Pacific Collage - Make Me A SoEModel Season 5</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.542304145846133&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Teaser: Science High School Talisay JS Prom 2013</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.426249360784946&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>2013 Sinulog</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.416590978417451&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Sinulog Festival 2012</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.342008892542327&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Photo Entry Sinulog 2012</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.413120998764449&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+        </div>
+      </details> 
+      
+      <details>
+        <summary class="section-title" id="others">
+          <div class="bg-preview" style="background-image: url('https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?q=80&w=600&auto=format&fit=crop');"></div>
+          <span class="title-text">OTHERS</span>
+          <span class="arrow-icon">→</span>
+        </summary>
+        <div class="category-content">
+          <div class="project-card">
+            <div class="project-info"><h3>BOOTH COLLECTION</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.2696916193718240&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div> 
+          <div class="project-card">
+            <div class="project-info"><h3>Photo Opportunity for 2020 CNY</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.2852633221479869&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Instagramable Displays collections</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.688851183264596&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Superimpose Images collections</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1583510831725454&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Entrance Arch Designs collection</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1584580801618457&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Events Photo Opportunity Structures</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1583519708391233&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Branded Vehicles</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1583520908391113&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Stage Designs</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1584584204951450&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Outdoor Stage Designs</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.1583492228393981&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>3D Images</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.342422265834323&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Logo Concept and Approved</h3></div>
+            <a href="https://www.facebook.com/media/set/?set=a.375256639217552&type=3" target="_blank" class="btn-link">View Gallery</a>
+          </div>
+        </div>
+      </details> 
+      
+      <details style="width: 100% !important;">
+        <summary class="section-title" id="videos">
+          <div class="bg-preview" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop');"></div>
+          <span class="title-text">VIDEOS</span>
+          <span class="arrow-icon">→</span>
+        </summary>
+        <div class="category-content">
+          <div class="project-card">
+            <div class="project-info"><h3>Laser Machine for Skyy Design Workshop social media post</h3></div>
+            <a href="https://www.youtube.com/watch?v=37wtmaFK1fM&list=PLk02scikilgWDNuJNsKk9lGfSV3zvyWYR&index=9" target="_blank" class="btn-link">Watch Videos</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>CNC Router Machine video for social media for Skyy Design Workshop</h3></div>
+            <a href="https://www.youtube.com/watch?v=zqbzYQdG_H4&list=PLk02scikilgWDNuJNsKk9lGfSV3zvyWYR&index=8" target="_blank" class="btn-link">Watch Videos</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>CNC Router Machine for Singapore National Day</h3></div>
+            <a href="https://www.youtube.com/watch?v=cYPJxHGI3Z4&list=PLk02scikilgWDNuJNsKk9lGfSV3zvyWYR&index=7" target="_blank" class="btn-link">Watch Videos</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>INX Year End 2018</h3></div>
+            <a href="https://www.youtube.com/watch?v=y96e_1I6yuo&list=PLk02scikilgWDNuJNsKk9lGfSV3zvyWYR&index=4" target="_blank" class="btn-link">Watch Videos</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>INX Fleet</h3></div>
+            <a href="https://www.youtube.com/watch?v=hlz3sR6x4Xo&list=PLk02scikilgWDNuJNsKk9lGfSV3zvyWYR&index=3" target="_blank" class="btn-link">Watch Videos</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Galaxy Background</h3></div>
+            <a href="https://www.youtube.com/watch?v=0DfvEeTPFew&list=PLk02scikilgWDNuJNsKk9lGfSV3zvyWYR" target="_blank" class="btn-link">Watch Videos</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>COPI Logo for event entrace</h3></div>
+            <a href="https://www.youtube.com/watch?v=L8-xauP7JHw&list=PLk02scikilgWDNuJNsKk9lGfSV3zvyWYR&index=2" target="_blank" class="btn-link">Watch Videos</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>BCA 2010</h3></div>
+            <a href="https://www.youtube.com/watch?v=wNHKWbgBHFs&list=PLVFOEAm5cAnIhS9JWKvD0WjOPhgRT3_y3&index=1" target="_blank" class="btn-link">Watch Videos</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Launching Proposal for Lexus RX350</h3></div>
+            <a href="https://www.youtube.com/watch?v=fgIACpnnGy4&list=PLVFOEAm5cAnIhS9JWKvD0WjOPhgRT3_y3&index=2" target="_blank" class="btn-link">Watch Videos</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3> Initial Presentation for CRA</h3></div>
+            <a href="https://www.youtube.com/watch?v=tgg3tmoRPd4&list=PLVFOEAm5cAnIhS9JWKvD0WjOPhgRT3_y3&index=3" target="_blank" class="btn-link">Watch Videos</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3> Arts Awards 2008 Presentation</h3></div>
+            <a href="https://www.youtube.com/watch?v=BjVD-7Fqgtk&list=PLVFOEAm5cAnIhS9JWKvD0WjOPhgRT3_y3&index=4" target="_blank" class="btn-link">Watch Videos</a>
+          </div>
+          <div class="project-card">
+            <div class="project-info"><h3>Proposed Peugeot Launch</h3></div>
+            <a href="https://www.youtube.com/watch?v=QVJe7wMtLrI" target="_blank" class="btn-link">Watch Videos</a>
+          </div>
+        </div>
+      </details>
+
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>
+      flex-direction: column;
         align-items: center;
         text-align: center;
         gap: 20px;

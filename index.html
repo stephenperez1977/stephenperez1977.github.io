@@ -32,7 +32,7 @@
       align-items: flex-end;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       header {
         flex-direction: column;
         align-items: center;
@@ -128,7 +128,7 @@
 
     @media (max-width: 768px) {
       .category-grid {
-        grid-template-columns: 1fr; /* Forces a single clean column on mobile screens */
+        grid-template-columns: 1fr; 
         justify-content: center;
       }
     }
@@ -218,7 +218,7 @@
     
     @media (max-width: 768px) {
       details[open] {
-        grid-column: span 1; /* Stops clipping issues on mobile layout screens */
+        grid-column: span 1; 
       }
     }
 
@@ -316,9 +316,16 @@
       <div class="name">Stephen G. Perez</div>
       <div class="subtitle">Senior 3D & Graphic Designer — Singapore</div>
     </div>
-    <a href="resume.pdf" download="Stephen_Perez_Resume.pdf" class="btn-resume">
-      Download Resume ↓
-    </a>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+      <!-- LINKEDIN BUTTON -->
+      <a href="https://www.linkedin.com/in/stephen-perez-40387535b/" target="_blank" class="btn-resume" style="background-color: #0077b5; border-color: #0077b5;">
+        Connect on LinkedIn ↗
+      </a>
+      <!-- SECURED DOWNLOAD RESUME BUTTON -->
+      <a href="resume.pdf" download="Stephen_Perez_Resume.pdf" class="btn-resume">
+        Download Resume ↓
+      </a>
+    </div>
   </header>
 
   <main>
@@ -703,7 +710,7 @@
           </div>
           <div class="project-card">
             <div class="project-info"><h3>COPI Logo for event entrace</h3></div>
-            <a href="https://www.youtube.com/watch?v=L8-xauP7JHw&list=PLk02scikilgWDNuJNsKk9lGfSV3zvyWYR&index=2" target="_blank" class="btn-link">Watch Videos</a>
+            <a href="https://www.youtube.com/watch?v=L8-xauP7JWw&list=PLk02scikilgWDNuJNsKk9lGfSV3zvyWYR&index=2" target="_blank" class="btn-link">Watch Videos</a>
           </div>
           <div class="project-card">
             <div class="project-info"><h3>BCA 2010</h3></div>

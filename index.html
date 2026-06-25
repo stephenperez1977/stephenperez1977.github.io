@@ -19,13 +19,14 @@
       max-width: 1100px;     
       width: 90%;            
       margin: 0 auto;        
-      padding: 60px 20px;
+      padding: 40px 20px;
+      box-sizing: border-box;
     }
 
     header {
       border-bottom: 1px solid #222226;
       padding-bottom: 30px;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
@@ -34,7 +35,8 @@
     @media (max-width: 640px) {
       header {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
         gap: 20px;
       }
     }
@@ -60,7 +62,6 @@
       font-weight: 600;
     }
 
-    /* RESUME DOWNLOAD BUTTON STYLING */
     .btn-resume {
       display: inline-flex;
       align-items: center;
@@ -95,25 +96,40 @@
       -webkit-text-fill-color: transparent;
     }
 
+    @media (max-width: 640px) {
+      .headline {
+        font-size: 32px;
+        text-align: center;
+      }
+    }
+
     .experience {
       color: #88888b;
       font-size: 18px;
       font-weight: 400;
       letter-spacing: -0.2px;
-      margin: 0 0 50px 0;
+      margin: 0 0 40px 0;
     }
 
-    /* THE INTERACTIVITY ASYMMETRIC GRID */
+    @media (max-width: 640px) {
+      .experience {
+        font-size: 15px;
+        text-align: center;
+      }
+    }
+
+    /* FIXED GRID SYSTEM FOR MOBILE CENTRALIZATION */
     .category-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
-      align-items: start;
+      width: 100%;
     }
 
     @media (max-width: 768px) {
       .category-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Forces a single clean column on mobile screens */
+        justify-content: center;
       }
     }
 
@@ -122,10 +138,11 @@
       border: 1px solid #222226;
       border-radius: 16px;
       overflow: hidden;
+      width: 100%;
+      box-sizing: border-box;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* MONOCHROMATIC HIGH-CONTRAST UI + HOVER TO REVEAL PREVIEWS */
     summary.section-title {
       cursor: pointer;
       outline: none;
@@ -144,7 +161,6 @@
       transition: all 0.3s ease;
     }
 
-    /* Hidden Thumbnail Background Wrapper */
     summary.section-title .bg-preview {
       position: absolute;
       top: 0;
@@ -160,7 +176,6 @@
       z-index: 1;
     }
 
-    /* Content layers strictly on top of background image */
     summary.section-title .title-text,
     summary.section-title .arrow-icon {
       position: relative;
@@ -174,7 +189,7 @@
       transition: transform 0.3s ease, color 0.3s ease;
     }
 
-    /* HOVER INTERACTIONS */
+    /* INTERACTIONS */
     details:hover {
       border-color: #ffffff;
       transform: translateY(-4px);
@@ -194,7 +209,7 @@
       color: #ffffff;
     }
 
-    /* OPEN STATE STYLING */
+    /* OPEN LAYER BEHAVIOR */
     details[open] {
       grid-column: span 2; 
       background-color: #16161a;
@@ -203,7 +218,7 @@
     
     @media (max-width: 768px) {
       details[open] {
-        grid-column: span 1;
+        grid-column: span 1; /* Stops clipping issues on mobile layout screens */
       }
     }
 
@@ -225,7 +240,7 @@
       align-self: center;
     }
 
-    /* PROJECT CARDS CONTAINER */
+    /* INNER GALLERY CONTENT ARRANGEMENT */
     .category-content {
       padding: 30px;
       display: grid;
@@ -236,6 +251,7 @@
     @media (max-width: 640px) {
       .category-content {
         grid-template-columns: 1fr;
+        padding: 20px;
       }
     }
 
@@ -247,6 +263,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-sizing: border-box;
       transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
@@ -284,7 +301,6 @@
       border-color: #ffffff;
     }
 
-    /* Scrollbar Layout */
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #0a0a0c; }
     ::-webkit-scrollbar-thumb { background: #222226; border-radius: 10px; }
@@ -300,7 +316,6 @@
       <div class="name">Stephen G. Perez</div>
       <div class="subtitle">Senior 3D & Graphic Designer — Singapore</div>
     </div>
-    <!-- The download attribute tells the browser to automatically download the file instead of just opening it -->
     <a href="resume.pdf" download="Stephen_Perez_Resume.pdf" class="btn-resume">
       Download Resume ↓
     </a>
@@ -654,7 +669,7 @@
         </div>
       </details> 
       
-      <!-- CATEGORY 7: VIDEOS (Spans both columns neatly as a balanced base card) -->
+      <!-- CATEGORY 7: VIDEOS -->
       <details style="grid-column: span 2;">
         <summary class="section-title" id="videos">
           <div class="bg-preview" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop');"></div>

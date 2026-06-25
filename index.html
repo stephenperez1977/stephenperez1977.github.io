@@ -26,6 +26,22 @@
       border-bottom: 1px solid #222226;
       padding-bottom: 30px;
       margin-bottom: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+    }
+
+    .header-left {
+      display: flex;
+      flex-direction: column;
     }
 
     .name {
@@ -42,6 +58,30 @@
       color: #66666e;
       margin-top: 6px;
       font-weight: 600;
+    }
+
+    /* RESUME DOWNLOAD BUTTON STYLING */
+    .btn-resume {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border: 1px solid #ffffff;
+      border-radius: 8px;
+      background-color: transparent;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .btn-resume:hover {
+      background-color: #ffffff;
+      color: #0a0a0c;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
     }
 
     .headline {
@@ -256,8 +296,14 @@
 <div class="portfolio-container">
 
   <header>
-    <div class="name">Stephen G. Perez</div>
-    <div class="subtitle">Senior 3D & Graphic Designer — Singapore</div>
+    <div class="header-left">
+      <div class="name">Stephen G. Perez</div>
+      <div class="subtitle">Senior 3D & Graphic Designer — Singapore</div>
+    </div>
+    <!-- The download attribute tells the browser to automatically download the file instead of just opening it -->
+    <a href="resume.pdf" download="Stephen_Perez_Resume.pdf" class="btn-resume">
+      Download Resume ↓
+    </a>
   </header>
 
   <main>
